@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+    {{- template "navbar" .}}
+    <div class="columns is-fullheight">
+        <div class="container column is-2 is-sidebar-menu is-hidden-mobile">
+            {{- template "sidebar" .}}
+        </div>
+
+        <div class="container column is-10">
+            <div class="section">
+                {{if eq .Template "index" }}
+                {{template "index" .}}
+                {{else if eq .Template "a"}}
+                {{template "a" .}}
+                {{else if eq .Template "b"}}
+                {{template "b" .}}
+                {{end}}
+            </div>
+        </div>
+        </section>
+</body>
+
+
+</html>
+
+<style>
+    html,
+    body {
+        height: 100vh;
+    }
+
+    .is-sidebar-menu {
+        padding: 2.5rem;
+        background: #ebe9e9;
+    }
+
+    .is-fullheight {
+        min-height: calc(100vh - 3.25rem + .75rem);
+        max-height: calc(100vh - 3.25rem + .75rem);
+        height: calc(100vh - 3.25rem + .75rem);
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+    }
+
+    .column {
+        overflow-y: auto
+    }
+</style>
